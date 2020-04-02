@@ -50,7 +50,7 @@ void Iterate_ptr(Mat& result, Mat& src) {					//指针方式获取像素信息
 	}
 }
 int main(int argc, char** argv) {
-	Mat src = imread("D:/WorkSpaces/C++/arithmetic/test1.jpg",IMREAD_COLOR);
+	Mat src = imread("./test1.jpg",IMREAD_COLOR);
 	if (src.empty()) {
 		cout << "can not read image" << endl;
 		return -1;

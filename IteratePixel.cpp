@@ -9,23 +9,23 @@ void Iterate(Mat& src) {
 	int ch = src.channels();
 	for (int row = 0; row < height; row++) {
 		for (int col = 0; col < width; col++) {
-			if (ch == 3) {									//ÈıÍ¨µÀ
-				Vec3b pixels = src.at<Vec3b>(row,col);		//´Ë´¦Îª3Í¨µÀ×Ö½ÚÀàĞÍ
+			if (ch == 3) {						//ä¸‰é€šé“
+				Vec3b pixels = src.at<Vec3b>(row,col);		//æ­¤å¤„ä¸º3é€šé“å­—èŠ‚ç±»å‹
 				int blue = pixels[0];
 				int green = pixels[1];
 				int red = pixels[2];
-				src.at<Vec3b>(row, col)[0] = 255 - blue;	//¸Ä±äÍ¨µÀÖµ
+				src.at<Vec3b>(row, col)[0] = 255 - blue;	//æ”¹å˜é€šé“å€¼
 				src.at<Vec3b>(row, col)[1] = 255 - green;
 				src.at<Vec3b>(row, col)[2] = 255 - red;
 			}
-			if (ch == 1) {									//µ¥Í¨µÀ
+			if (ch == 1) {						//å•é€šé“
 				int pixel = src.at<uchar>(row, col);
-				src.at<uchar>(row, col) = 255 - pixel;		//¸Ä±äÍ¨µÀµÄÖµ
+				src.at<uchar>(row, col) = 255 - pixel;		//æ”¹å˜é€šé“çš„å€¼
 			}
 		}
 	}
 }
-void Iterate_ptr(Mat& result, Mat& src) {					//Ö¸Õë·½Ê½»ñÈ¡ÏñËØĞÅÏ¢
+void Iterate_ptr(Mat& result, Mat& src) {					//æŒ‡é’ˆæ–¹å¼è·å–åƒç´ ä¿¡æ¯
 	int height = src.rows;
 	int width = src.cols;
 	int ch = src.channels();
@@ -56,8 +56,8 @@ int main(int argc, char** argv) {
 		return -1;
 	}
 	Mat zeros_src = Mat::zeros(src.size(), src.type());
-	Iterate_ptr(zeros_src, src);						//Ö¸ÕëÀàĞÍµÄÏñËØ±éÀú
-	Iterate(src);										//Í¨¹ıÆÕÍ¨·½Ê½±éÀúÏñËØ
+	Iterate_ptr(zeros_src, src);						//æŒ‡é’ˆç±»å‹çš„åƒç´ éå†
+	Iterate(src);								//é€šè¿‡æ™®é€šæ–¹å¼éå†åƒç´ 
 	
 	imshow("pixel-demo", src);
 	imshow("pixel-ptr-demo", zeros_src);
